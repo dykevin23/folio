@@ -44,7 +44,7 @@ app/
     components/              ← shadcn-ui + 공통 컴포넌트
     pages/                   ← 초기 페이지, 404 등
   features/
-    property/                ← 부동산 트래킹
+    realestate/              ← 부동산 트래킹
       components/
         mobile/              ← 모바일 전용 UI
         desktop/             ← PC 전용 UI
@@ -66,9 +66,9 @@ app/
     migrations/              ← DB 마이그레이션 SQL
   routes/                    ← 라우트 진입점 (얇게 유지)
     mobile/
-      property.tsx           ← feature page를 import만
+      realestate.tsx           ← feature page를 import만
     desktop/
-      property.tsx           ← feature page를 import만
+      realestate.tsx           ← feature page를 import만
   routes.ts                  ← 라우트 설정
   root.tsx
   app.css
@@ -81,8 +81,8 @@ readme/                      ← 프로젝트 기획 문서
 
 **routes는 얇게 유지**
 ```ts
-// app/routes/mobile/property.tsx
-export { default } from "~/features/property/pages/mobile";
-export { loader } from "~/features/property/queries";
-export { action } from "~/features/property/mutations";
+// app/routes/mobile/realestate.tsx
+export { default } from "~/features/realestate/pages/mobile";
+export { loader } from "~/features/realestate/queries";
+export { action } from "~/features/realestate/mutations";
 ```

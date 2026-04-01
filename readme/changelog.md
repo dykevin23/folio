@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-04-01
+
+### Drizzle ORM 도입 및 DB 마이그레이션
+- drizzle-orm, drizzle-kit, postgres 드라이버 설치
+- `drizzle.config.ts` 생성 (스키마 경로: `app/features/**/schema.ts`)
+- `app/features/realestate/schema.ts` — 5개 테이블 스키마 정의 (regions, zones, complexes, complex_types, price_histories)
+- Supabase DB 마이그레이션 실행 완료
+- package.json에 `db:generate`, `db:migrate`, `db:studio` 스크립트 추가
+
+### Supabase 연결
+- `.env`에 DATABASE_URL, SUPABASE_URL, SUPABASE_ANON_KEY 설정
+- DB 연결 확인 완료
+
+### 문서 및 네이밍 정리
+- feature 폴더명 `property` → `realestate`로 변경
+- `02_system_design.md` 디렉토리 구조 내 property → realestate 반영
+- `.claude/commands/db-sync.md` Drizzle 기준으로 업데이트
+
+---
+
 ## 2026-03-23
 
 ### 프로젝트 초기 세팅
