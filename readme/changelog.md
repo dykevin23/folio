@@ -2,6 +2,14 @@
 
 ## 2026-04-08
 
+### PC 레이아웃 및 라우팅 구축
+- 디바이스 감지 리다이렉트 구현 (`/` → User-Agent 기반 `/desktop` 또는 `/mobile` 분기)
+- `routes.ts` 전체 라우트 구조 설정 (desktop/mobile layout 분리)
+- PC GNB 레이아웃 — 상단 네비게이션 (Folio 로고 + 홈/부동산/자산/설정)
+- 모바일 하단 탭 바 레이아웃 껍데기
+- PC 페이지 껍데기 4개 (홈, 부동산, 자산, 설정)
+- 모바일 페이지 껍데기 2개 (홈, 부동산)
+
 ### 문서 정리
 - `folio_plan.md` 추가 — 전체 기획 문서 (목적, Feature, 모바일/PC 화면 설계)
 - 기존 개별 문서 삭제 (01_overview.md, property.md, todo.md, assets.md, settings.md) → folio_plan.md로 대체
