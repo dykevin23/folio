@@ -6,8 +6,9 @@
 |------|------|------|
 | Framework | React Router v7 (Remix 후속) | 풀스택, API 서버 분리 불필요 |
 | Database | Supabase (PostgreSQL) | Free tier로 개인용 충분 |
-| Styling | TailwindCSS + shadcn-ui | |
-| 배포 | Vercel | Remix 공식 지원, Free tier |
+| ORM | Drizzle ORM | 스키마 코드 관리, 마이그레이션 자동화 |
+| Styling | TailwindCSS v4 + shadcn-ui | |
+| 배포 | Vercel | Free tier |
 | 모바일 접근 | PWA | 앱스토어 없이 홈화면 추가 가능 |
 | 언어 | TypeScript | |
 | 패키지 매니저 | pnpm | |

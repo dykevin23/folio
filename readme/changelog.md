@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-04-08
+
+### 문서 정리
+- `folio_plan.md` 추가 — 전체 기획 문서 (목적, Feature, 모바일/PC 화면 설계)
+- 기존 개별 문서 삭제 (01_overview.md, property.md, todo.md, assets.md, settings.md) → folio_plan.md로 대체
+- `README.md` 문서 목록 갱신
+- `02_system_design.md` 기술 스택에 Drizzle ORM 추가
+- `05_dev_roadmap.md` PC 우선 개발 순서로 로드맵 재정리
+
+---
+
 ## 2026-04-01
 
 ### Drizzle ORM 도입 및 DB 마이그레이션
