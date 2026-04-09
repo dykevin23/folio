@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-04-09
+
+### 앞마당(yards) 테이블 도입 및 DB 스키마 변경
+- `yards` 테이블 신규 생성 — 내가 트래킹하는 지역구(앞마당) 관리 (nickname, description, population, grade, 입지가치 5개 항목)
+- `zones` FK 변경 — `region_id` → `yard_id` (생활권이 앞마당 하위로 연결)
+- `complexes`에 입지가치 평가 5개 컬럼 추가 (`val_job`, `val_traffic`, `val_env`, `val_school`, `val_supply`)
+- Drizzle 마이그레이션 생성 및 Supabase 적용 완료
+
+### 문서 업데이트
+- `03_db_schema.md` — yards 섹션 추가, 계층 구조도 갱신, zones FK 반영, complexes 입지가치 컬럼 반영
+
+---
+
 ## 2026-04-08
 
 ### PC 레이아웃 및 라우팅 구축

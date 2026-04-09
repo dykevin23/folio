@@ -18,11 +18,32 @@ export const regions = pgTable("regions", {
   depth: integer("depth").notNull(),
 });
 
-// 생활권
-export const zones = pgTable("zones", {
+// 앞마당 (내가 트래킹하는 지역구)
+export const yards = pgTable("yards", {
   id: uuid("id").primaryKey().defaultRandom(),
   regionId: uuid("region_id")
     .references(() => regions.id)
+    .notNull(),
+
+  nickname: text("nickname"),
+  description: text("description"),
+  population: text("population"),
+  grade: integer("grade"),
+
+  valJob: text("val_job"),
+  valTraffic: text("val_traffic"),
+  valEnv: text("val_env"),
+  valSchool: text("val_school"),
+  valSupply: text("val_supply"),
+
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+});
+
+// 생활권
+export const zones = pgTable("zones", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  yardId: uuid("yard_id")
+    .references(() => yards.id)
     .notNull(),
   name: text("name").notNull(),
 });
@@ -46,6 +67,12 @@ export const complexes = pgTable("complexes", {
 
   preference: integer("preference"),
   locationValues: text("location_values").array(),
+
+  valJob: text("val_job"),
+  valTraffic: text("val_traffic"),
+  valEnv: text("val_env"),
+  valSchool: text("val_school"),
+  valSupply: text("val_supply"),
 
   pricePeak: integer("price_peak"),
   pricePeakDate: date("price_peak_date"),
