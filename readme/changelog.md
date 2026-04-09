@@ -2,14 +2,24 @@
 
 ## 2026-04-09
 
+### PC 설정 페이지 — 행정구역 관리
+- `app/features/settings/` feature 구조 생성 (queries, mutations, pages/desktop)
+- 행정구역(regions) CRUD 구현 — 시/도 목록 → 클릭하여 시/군/구 관리
+- 다이얼로그로 추가/수정, hover 시 수정/삭제 버튼
+- `app/lib/db.ts` — Drizzle DB 클라이언트 인스턴스 생성
+- shadcn-ui 컴포넌트 추가 (input, dialog, select, table)
+- `routes/desktop/settings.tsx` → feature 연결 (loader/action/default export)
+
 ### 앞마당(yards) 테이블 도입 및 DB 스키마 변경
 - `yards` 테이블 신규 생성 — 내가 트래킹하는 지역구(앞마당) 관리 (nickname, description, population, grade, 입지가치 5개 항목)
 - `zones` FK 변경 — `region_id` → `yard_id` (생활권이 앞마당 하위로 연결)
 - `complexes`에 입지가치 평가 5개 컬럼 추가 (`val_job`, `val_traffic`, `val_env`, `val_school`, `val_supply`)
-- Drizzle 마이그레이션 생성 및 Supabase 적용 완료
+- `regions` 스키마 간소화 — `type`, `depth` 컬럼 제거 (parent_id 유무로 구분)
+- `regions.id`를 uuid → integer로 변경 — 규칙성 있는 ID 체계 (시/도: 10000000 단위, 시/군/구: +1 순차)
+- DB 전체 리셋 및 마이그레이션 재생성/적용 완료
 
 ### 문서 업데이트
-- `03_db_schema.md` — yards 섹션 추가, 계층 구조도 갱신, zones FK 반영, complexes 입지가치 컬럼 반영
+- `03_db_schema.md` — yards 섹션 추가, regions 간소화, 계층 구조도 갱신, zones FK 반영, complexes 입지가치 컬럼 반영
 
 ---
 

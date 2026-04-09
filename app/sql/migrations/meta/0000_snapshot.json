@@ -1,5 +1,5 @@
 {
-  "id": "5da44ad1-4d42-4128-8b2d-78b16d012c3f",
+  "id": "f7898d49-7b0c-47e9-a457-ab2df19a8f9e",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -81,7 +81,7 @@
         },
         "region_id": {
           "name": "region_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -136,6 +136,36 @@
         "location_values": {
           "name": "location_values",
           "type": "text[]",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "val_job": {
+          "name": "val_job",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "val_traffic": {
+          "name": "val_traffic",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "val_env": {
+          "name": "val_env",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "val_school": {
+          "name": "val_school",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "val_supply": {
+          "name": "val_supply",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         },
@@ -309,32 +339,19 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "parent_id": {
           "name": "parent_id",
-          "type": "uuid",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
         "name": {
           "name": "name",
           "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "type": {
-          "name": "type",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "depth": {
-          "name": "depth",
-          "type": "integer",
           "primaryKey": false,
           "notNull": true
         }
@@ -361,8 +378,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.zones": {
-      "name": "zones",
+    "public.yards": {
+      "name": "yards",
       "schema": "",
       "columns": {
         "id": {
@@ -374,6 +391,107 @@
         },
         "region_id": {
           "name": "region_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nickname": {
+          "name": "nickname",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "population": {
+          "name": "population",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "grade": {
+          "name": "grade",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "val_job": {
+          "name": "val_job",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "val_traffic": {
+          "name": "val_traffic",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "val_env": {
+          "name": "val_env",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "val_school": {
+          "name": "val_school",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "val_supply": {
+          "name": "val_supply",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "yards_region_id_regions_id_fk": {
+          "name": "yards_region_id_regions_id_fk",
+          "tableFrom": "yards",
+          "tableTo": "regions",
+          "columnsFrom": [
+            "region_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.zones": {
+      "name": "zones",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "yard_id": {
+          "name": "yard_id",
           "type": "uuid",
           "primaryKey": false,
           "notNull": true
@@ -387,12 +505,12 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "zones_region_id_regions_id_fk": {
-          "name": "zones_region_id_regions_id_fk",
+        "zones_yard_id_yards_id_fk": {
+          "name": "zones_yard_id_yards_id_fk",
           "tableFrom": "zones",
-          "tableTo": "regions",
+          "tableTo": "yards",
           "columnsFrom": [
-            "region_id"
+            "yard_id"
           ],
           "columnsTo": [
             "id"

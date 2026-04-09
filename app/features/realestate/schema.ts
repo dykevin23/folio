@@ -9,19 +9,18 @@ import {
   unique,
 } from "drizzle-orm/pg-core";
 
-// 행정구역 (self-referencing)
+// 행정구역 (self-referencing: 시/도 → 시/군/구)
+// ID 규칙: 시/도 = 10000000, 20000000... / 시/군/구 = 10000001, 10000002...
 export const regions = pgTable("regions", {
-  id: uuid("id").primaryKey().defaultRandom(),
-  parentId: uuid("parent_id").references((): any => regions.id),
+  id: integer("id").primaryKey(),
+  parentId: integer("parent_id").references((): any => regions.id),
   name: text("name").notNull(),
-  type: text("type").notNull(),
-  depth: integer("depth").notNull(),
 });
 
 // 앞마당 (내가 트래킹하는 지역구)
 export const yards = pgTable("yards", {
   id: uuid("id").primaryKey().defaultRandom(),
-  regionId: uuid("region_id")
+  regionId: integer("region_id")
     .references(() => regions.id)
     .notNull(),
 
@@ -54,7 +53,7 @@ export const complexes = pgTable("complexes", {
   zoneId: uuid("zone_id")
     .references(() => zones.id)
     .notNull(),
-  regionId: uuid("region_id")
+  regionId: integer("region_id")
     .references(() => regions.id)
     .notNull(),
   name: text("name").notNull(),
